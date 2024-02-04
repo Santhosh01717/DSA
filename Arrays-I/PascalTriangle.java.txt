@@ -1,0 +1,33 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> prev = new ArrayList<>();    
+        prev.add(1);
+        int n = 0;
+        List<Integer> temp = new ArrayList<>(Arrays.asList(1));
+         ans.add(temp);
+        while(n<numRows-1){
+          List<Integer> curr = new ArrayList<>();
+            for(int i = 0 ; i <= prev.size() ; i++ ){
+                    if(i == 0 || i == prev.size()){
+                        curr.add(1);
+                    }
+                    else{
+                        int val = prev.get(i-1)+prev.get(i);
+                        curr.add(val);
+                    }
+               }
+               ans.add(curr);
+               System.out.println(curr);
+               
+
+        for(int i = 0 ; i < prev.size() ; i++ ){
+            prev.set(i, curr.get(i));
+        }
+        prev.add(curr.get(curr.size()-1));
+        n++;
+        }
+         return ans;
+
+    }
+}

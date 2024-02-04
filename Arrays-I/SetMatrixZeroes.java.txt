@@ -1,0 +1,36 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int mat2[][] = new int[n][m];
+        for(int i = 0 ; i < n ; i++ ){
+            for(int j = 0 ; j < m ; j++ ){
+                mat2[i][j] = matrix[i][j];
+            }
+        }
+        for(int i = 0; i < matrix.length ; i++){
+            for(int j = 0 ; j < matrix[0].length ; j++ ){
+                if(matrix[i][j] == 0 ){
+                     setZeroRow(i,mat2);
+                     setZeroCol(j,mat2);
+                }
+            }
+        }
+        for(int i = 0; i < matrix.length ; i++){
+            for(int j = 0 ; j < matrix[0].length ; j++ ){
+                matrix[i][j] = mat2[i][j];
+            }
+        }
+        
+    }
+    public void setZeroRow(int row,int[][] matrix){
+        for(int i = 0 ; i < matrix[0].length ; i++ ){
+                matrix[row][i] = 0;
+        }
+    }
+    public void setZeroCol(int col,int[][] matrix){
+        for(int i = 0 ; i < matrix.length ; i++ ){
+            matrix[i][col]=0;
+        }
+    }
+}
